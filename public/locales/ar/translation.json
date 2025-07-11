@@ -1,0 +1,21 @@
+{
+  "hello world": "مرحبا بالعالم",
+  "min": "الصغرى",
+  "max": "الكبرى",
+  "broken clouds": "غيوم متقطعة",
+  "clear sky": "سماء صافية",  
+  "few clouds": "غيوم قليلة",
+  "scattered clouds": "غيوم متناثرة", 
+  "shower rain": "أمطار خفيفة",
+  "rain": "أمطار",
+  "thunderstorm": "عاصفة رعدية",
+  "snow": "ثلوج",
+  "mist": "ضباب",
+  "haze": "ضباب خفيف",
+  "drizzle": "رذاذ",
+  "light rain": "أمطار خفيفة",  
+  "heavy rain": "أمطار غزيرة",
+  "light snow": "ثلوج خفيفة",
+  "Tanger": "طنجة"
+
+}
