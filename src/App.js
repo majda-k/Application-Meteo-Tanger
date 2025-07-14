@@ -3,10 +3,13 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CardMeteo from "./cardMeteo";
 import { Container } from "@mui/material";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import moment from "moment";
 import "moment/locale/ar"; // Import Arabic locale for moment.js
 import i18n from "./i18n"; // Import your i18n instance
+import { fetchWeather } from "./weatherApiSlice";
+import { useDispatch } from "react-redux";
+
 
 const theme = createTheme({
   topography: {
@@ -17,7 +20,7 @@ const theme = createTheme({
 });
 
 function App() {
-
+const dispatch = useDispatch();
   const [dateAndTime, setDateAndTime] = useState("")
   const cancelAxiosRef = React.useRef(null);
   const [temp, setTemp] = useState({
@@ -27,7 +30,11 @@ function App() {
     description: null,
     icon: null,
   });
+
+
   useEffect(() => {
+    console.log("Fetching weather data...");
+    dispatch(fetchWeather());
     i18n.changeLanguage("ar");
     setDateAndTime(moment().locale("ar").format("MMMM Do YYYY, h:mm:ss a"));
     axios({

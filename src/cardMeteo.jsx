@@ -9,6 +9,9 @@ import moment from "moment";
 import "moment/locale/ar"; // Import Arabic locale for moment.js
 import { useSelector, useDispatch } from "react-redux";
 import { changeResult } from "./weatherApiSlice"; // Import the action to change the result
+import CircularProgress from "@mui/material/CircularProgress";
+
+
 
 export default function CardMeteo({ temp }) {
   const dispatch = useDispatch();
@@ -16,6 +19,8 @@ export default function CardMeteo({ temp }) {
     console.log("the weather result is : ", state);
     return state.result;
   });
+
+  const isLoader = useSelector((state) => state.weather.isLoading);
 
 
   const { t, i18n } = useTranslation();
@@ -85,12 +90,14 @@ export default function CardMeteo({ temp }) {
             justifyContent: "space-between",
           }}
         >
+         
           <div>
             <CloudIcon style={{ fontSize: "200" }} />
           </div>
           <div style={{ textAlign: "end" }}>
             <div style={{ display: "flex" }}>
               <div>
+               
                 {temp.icon && (
                   <img
                     src={temp.icon}
@@ -104,6 +111,8 @@ export default function CardMeteo({ temp }) {
                 )}
               </div>
               <CardContent sx={{ fontSize: 50, fontFamily: "IBM" }}>
+                {isLoader==="true" ? <CircularProgress /> : ""}
+                
                 {temp.temp}°C
               </CardContent>
             </div>
