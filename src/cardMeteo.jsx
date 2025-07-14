@@ -13,7 +13,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 
 
-export default function CardMeteo({ temp }) {
+export default function CardMeteo() {
   const dispatch = useDispatch();
   const result = useSelector((state) => {
     console.log("the weather result is : ", state);
@@ -21,6 +21,9 @@ export default function CardMeteo({ temp }) {
   });
 
   const isLoader = useSelector((state) => state.weather.isLoading);
+
+  const temp = useSelector((state) => state.weather.weather);
+  
 
 
   const { t, i18n } = useTranslation();

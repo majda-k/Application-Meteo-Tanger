@@ -37,48 +37,23 @@ const dispatch = useDispatch();
     dispatch(fetchWeather());
     i18n.changeLanguage("ar");
     setDateAndTime(moment().locale("ar").format("MMMM Do YYYY, h:mm:ss a"));
-    axios({
-      cancelToken: new axios.CancelToken((c) => {
-        cancelAxiosRef.current = c;
-      }),
-      method: "get",
-      url: "https://api.openweathermap.org/data/2.5/weather?lat=35.7696302&lon=-5.8033522&appid=e125df6838fd4205cab05e0d660fbd41&units=metric",
-    })
+
       
     
+
+
+      //  return {
+      //     temp: temp,
+      //     min: min,
+      //     max: max,
+      //     description: description,
+      //     icon:`https://openweathermap.org/img/wn/${icon}@2x.png`,
+      //     dateAndTime: dateAndTime,
+      //   };
+
+
+       })
     
-    .then(function (response) {
-        // handle success
-        const temp = Math.round(response.data.main.temp);
-        console.log(temp);
-
-        const min = Math.round(response.data.main.temp_min);
-        const max = Math.round(response.data.main.temp_max);
-        const description = response.data.weather[0].description;
-        const icon = response.data.weather[0].icon;
-        const dateAndTime = moment().locale("ar").format("MMMM Do YYYY, h:mm:ss a");
-        console.log(response.data);
-
-        setTemp({
-          temp: temp,
-          min: min,
-          max: max,
-          description: description,
-          icon:`https://openweathermap.org/img/wn/${icon}@2x.png`,
-          dateAndTime: dateAndTime,
-        });
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      });
-    return () => {
-      // cleanup function to cancel the request if the component unmounts
-      console.log("Cleaning up...");
-
-      cancelAxiosRef.current();
-    };
-  }, []);
 
   return (
     <React.StrictMode>
