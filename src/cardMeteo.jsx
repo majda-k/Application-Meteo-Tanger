@@ -7,14 +7,25 @@ import "moment/locale/ar"; // Arabe
 import "moment/locale/en-gb"; // Anglais
 import moment from "moment";
 import "moment/locale/ar"; // Import Arabic locale for moment.js
+import { useSelector, useDispatch } from "react-redux";
+import { changeResult } from "./weatherApiSlice"; // Import the action to change the result
 
 export default function CardMeteo({ temp }) {
+  const dispatch = useDispatch();
+  const result = useSelector((state) => {
+    console.log("the weather result is : ", state);
+    return state.result;
+  });
+
+
   const { t, i18n } = useTranslation();
   const [locale, setLocale] = useState("ar");
   const [dateAndTime, setDateAndTime] = useState("");
 
   useEffect(() => {
     // Définit la langue initiale à l’arabe
+    console.log("the weather result is : ", result);
+    dispatch(changeResult());
     i18n.changeLanguage("ar");
     moment.locale("ar");
     setDateAndTime(moment().format("dddd, D MMMM YYYY - h:mm:ss A"));
@@ -37,7 +48,7 @@ export default function CardMeteo({ temp }) {
     <>
       <Card
         style={{ padding: "10px", marginTop: "20px" }}
-        const
+   
         direction={locale === "ar" ? "rtl" : "ltr"}
         sx={{
           minWidth: 275,
