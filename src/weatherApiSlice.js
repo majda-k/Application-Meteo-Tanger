@@ -15,7 +15,8 @@ export const fetchWeather = createAsyncThunk(
     const min = Math.round(response.data.main.temp_min);
     const max = Math.round(response.data.main.temp_max);
     const description = response.data.weather[0].description;
-    const icon = response.data.weather[0].icon;
+    const iconCode = response.data.weather[0].icon;
+    const icon = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
     const dateAndTime = moment().locale("ar").format("MMMM Do YYYY, h:mm:ss a");
 
     return { temp, min, max, description, icon, dateAndTime };
